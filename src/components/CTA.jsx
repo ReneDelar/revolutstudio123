@@ -3,8 +3,14 @@ import { ArrowRight } from 'lucide-react'
 
 export default function CTA() {
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-pitch-darkness to-deep-mocha">
-      <div className="max-w-4xl mx-auto text-center space-y-8">
+    <section className="py-24 px-6 bg-gradient-to-b from-pitch-darkness via-deep-mocha to-pitch-darkness relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-rust-accent/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-cork-dust/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
         <h2 className="text-5xl md:text-6xl font-bold text-cork-dust font-halyard leading-tight">
           Готовы к трансформации вашего бренда?
         </h2>

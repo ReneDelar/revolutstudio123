@@ -15,7 +15,7 @@ export default function Navigation() {
   ]
 
   return (
-    <nav className="fixed top-0 w-full bg-pitch-darkness/95 backdrop-blur-md z-50 border-b border-faded-bark">
+    <nav className="fixed top-0 w-full bg-gradient-to-b from-pitch-darkness via-pitch-darkness/98 to-pitch-darkness/90 backdrop-blur-xl z-50 border-b border-rust-accent/10">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
@@ -29,10 +29,11 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-cork-dust text-sm hover:text-rust-accent transition-colors duration-300"
-              >
-                {link.label}
-              </Link>
+                className="text-cork-dust text-sm hover:text-rust-accent transition-colors duration-300 relative group"
+            >
+              {link.label}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-rust-accent group-hover:w-full transition-all duration-300"></span>
+            </Link>
             ))}
           </div>
 
@@ -40,7 +41,7 @@ export default function Navigation() {
           <div className="hidden md:block">
             <Link
               href="/contact"
-              className="bg-rust-accent text-pitch-darkness px-6 py-3 rounded-3xl text-sm font-semibold hover:opacity-90 transition-opacity duration-300"
+              className="bg-gradient-to-r from-rust-accent to-rust-accent/80 text-pitch-darkness px-6 py-3 rounded-3xl text-sm font-semibold hover:shadow-lg hover:shadow-rust-accent/30 hover:from-rust-accent hover:to-rust-accent transition-all duration-300"
             >
               Обсудить проект
             </Link>

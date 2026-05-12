@@ -21,13 +21,13 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/contact"
-                className="bg-rust-accent text-pitch-darkness px-8 py-4 rounded-3xl font-semibold text-center hover:opacity-90 transition-opacity duration-300"
+                className="bg-gradient-to-r from-rust-accent to-rust-accent/80 text-pitch-darkness px-8 py-4 rounded-3xl font-semibold text-center hover:shadow-lg hover:shadow-rust-accent/30 hover:from-rust-accent hover:to-rust-accent transition-all duration-300"
               >
                 Начать проект
               </Link>
               <Link
                 href="/portfolio"
-                className="bg-faded-bark text-cork-dust px-8 py-4 rounded-3xl font-semibold text-center border border-rust-accent hover:bg-rust-accent hover:text-pitch-darkness transition-all duration-300"
+                className="bg-gradient-to-r from-faded-bark to-deep-mocha text-cork-dust px-8 py-4 rounded-3xl font-semibold text-center border border-rust-accent/30 hover:border-rust-accent hover:bg-rust-accent/10 hover:text-rust-accent transition-all duration-300"
               >
                 Смотреть портфолио
               </Link>
@@ -51,12 +51,29 @@ export default function Hero() {
           </div>
 
           {/* Right Image */}
-          <div className="relative h-96 md:h-full min-h-96">
-            <div className="absolute inset-0 bg-gradient-rainbow rounded-xl opacity-20 blur-3xl"></div>
-            <div className="relative bg-gradient-to-br from-faded-bark to-pitch-darkness rounded-xl overflow-hidden h-full flex items-center justify-center border border-aged-stone">
-              <div className="text-center space-y-4">
-                <div className="text-6xl">🎨</div>
-                <p className="text-cork-dust text-lg font-literata">Творчество в каждом пикселе</p>
+          <div className="relative h-96 md:h-full min-h-[500px]">
+            <div className="absolute inset-0 bg-gradient-rainbow rounded-2xl opacity-30 blur-3xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-rust-accent/20 via-cork-dust/5 to-pitch-darkness rounded-2xl opacity-40"></div>
+            <div className="relative bg-gradient-to-br from-faded-bark/80 via-deep-mocha/60 to-pitch-darkness rounded-2xl overflow-hidden h-full flex items-center justify-center border border-rust-accent/30">
+              {/* Animated gradient overlay */}
+              <div className="absolute inset-0 opacity-50">
+                <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-rust-accent/10 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-cork-dust/5 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+              </div>
+
+              <div className="relative text-center space-y-6 z-10 px-8">
+                <div className="inline-block">
+                  <div className="relative w-24 h-24 mx-auto">
+                    <div className="absolute inset-0 bg-rust-accent/20 rounded-full blur-2xl animate-pulse"></div>
+                    <div className="relative w-24 h-24 bg-gradient-to-br from-rust-accent/30 to-cork-dust/10 rounded-full border-2 border-rust-accent/40 flex items-center justify-center">
+                      <span className="text-5xl">✨</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-cork-dust text-xl font-literata font-bold">Творчество в каждом пикселе</p>
+                  <p className="text-aged-stone text-sm">Инновационные решения для вашего бренда</p>
+                </div>
               </div>
             </div>
           </div>
