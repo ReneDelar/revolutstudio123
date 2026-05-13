@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState('all')
+  const [sectionRef, sectionVisible] = useScrollAnimation()
 
   const projects = [
     {
@@ -70,9 +72,13 @@ export default function Portfolio() {
     : projects.filter(p => p.category === activeCategory)
 
   return (
-    <section className="py-24 px-6 bg-pitch-darkness">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+    <section ref={sectionRef} className="py-24 px-6 bg-pitch-darkness relative overflow-hidden">
+      {/* Background floating elements */}
+      <div className="absolute top-1/4 -left-40 w-80 h-80 bg-rust-accent/5 rounded-full blur-3xl opacity-30 animate-float"></div>
+      <div className="absolute bottom-1/4 -right-40 w-80 h-80 bg-cork-dust/5 rounded-full blur-3xl opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className={`text-center mb-16 transition-all duration-700 ${sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-5xl md:text-6xl font-bold text-cork-dust mb-6 font-halyard">
             Наше портфолио
           </h2>
@@ -100,10 +106,15 @@ export default function Portfolio() {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map(project => (
+          {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="group cursor-pointer"
+              className={`group cursor-pointer transition-all duration-700 ${
+                sectionVisible
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: sectionVisible ? `${index * 100}ms` : '0ms' }}
             >
               <div className="relative h-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-rust-accent/15 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300 blur-xl -z-10"></div>

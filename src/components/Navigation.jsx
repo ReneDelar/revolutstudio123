@@ -19,7 +19,7 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-cork-dust font-literata">
+          <Link href="/" className="text-2xl font-bold text-cork-dust font-literata hover:text-rust-accent transition-colors duration-300">
             Революет
           </Link>
 

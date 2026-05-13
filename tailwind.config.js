@@ -65,6 +65,40 @@ module.exports = {
       backgroundImage: {
         'gradient-rainbow': 'linear-gradient(to right, rgb(253, 254, 237), rgb(255, 191, 2) 17%, rgb(233, 80, 14) 32%, rgb(205, 25, 125), rgb(140, 1, 156), rgb(37, 1, 135), rgb(3, 3, 16))',
       },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeInLeft: {
+          '0%': { opacity: '0', transform: 'translateX(-30px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        fadeInRight: {
+          '0%': { opacity: '0', transform: 'translateX(30px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        slideInUp: {
+          '0%': { transform: 'translateY(40px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        glow: {
+          '0%, 100%': { boxShadow: '0 0 5px rgba(220, 80, 0, 0.2)' },
+          '50%': { boxShadow: '0 0 20px rgba(220, 80, 0, 0.4)' },
+        },
+      },
+      animation: {
+        'float': 'float 6s ease-in-out infinite',
+        'fadeInUp': 'fadeInUp 0.6s ease-out',
+        'fadeInLeft': 'fadeInLeft 0.6s ease-out',
+        'fadeInRight': 'fadeInRight 0.6s ease-out',
+        'slideInUp': 'slideInUp 0.6s ease-out',
+        'glow': 'glow 3s ease-in-out infinite',
+      },
     },
   },
   plugins: [],
