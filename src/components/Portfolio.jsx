@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState('all')
+  const [sectionRef, sectionVisible] = useScrollAnimation()
 
   const projects = [
     {
@@ -70,9 +72,13 @@ export default function Portfolio() {
     : projects.filter(p => p.category === activeCategory)
 
   return (
-    <section className="py-24 px-6 bg-pitch-darkness">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+    <section ref={sectionRef} className="py-24 px-6 bg-pitch-darkness relative overflow-hidden">
+      {/* Background floating elements */}
+      <div className="absolute top-1/4 -left-40 w-80 h-80 bg-rust-accent/5 rounded-full blur-3xl opacity-30 animate-float"></div>
+      <div className="absolute bottom-1/4 -right-40 w-80 h-80 bg-cork-dust/5 rounded-full blur-3xl opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className={`text-center mb-16 transition-all duration-700 ${sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-5xl md:text-6xl font-bold text-cork-dust mb-6 font-halyard">
             Наше портфолио
           </h2>
@@ -100,45 +106,57 @@ export default function Portfolio() {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map(project => (
+          {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="group cursor-pointer"
+              className={`group cursor-pointer transition-all duration-700 ${
+                sectionVisible
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: sectionVisible ? `${index * 100}ms` : '0ms' }}
             >
-              <div className="bg-faded-bark border border-deep-mocha rounded-xl overflow-hidden hover:border-rust-accent transition-all duration-300 h-full flex flex-col">
-                {/* Image Area */}
-                <div className="h-48 bg-gradient-to-br from-deep-mocha to-pitch-darkness flex items-center justify-center overflow-hidden relative">
-                  <div className="text-6xl group-hover:scale-110 transition-transform duration-300">
-                    {project.image}
-                  </div>
-                  <div className="absolute inset-0 bg-rust-accent opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold text-cork-dust mb-2 font-halyard">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-aged-stone mb-4 flex-grow">
-                    {project.description}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, idx) => (
-                      <span
-                        key={idx}
-                        className="text-xs bg-pitch-darkness text-cork-dust px-3 py-1 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+              <div className="relative h-full">
+                <div className="absolute inset-0 bg-gradient-to-br from-rust-accent/15 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300 blur-xl -z-10"></div>
+                <div className="bg-gradient-to-br from-faded-bark/90 via-deep-mocha/70 to-pitch-darkness border border-rust-accent/20 group-hover:border-rust-accent/50 rounded-2xl overflow-hidden h-full flex flex-col transition-all duration-300 backdrop-blur-sm">
+                  {/* Image Area */}
+                  <div className="h-56 bg-gradient-to-br from-rust-accent/10 via-deep-mocha to-pitch-darkness flex items-center justify-center overflow-hidden relative">
+                    <div className="absolute inset-0 opacity-40">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-rust-accent/20 rounded-full blur-2xl"></div>
+                      <div className="absolute bottom-0 left-0 w-24 h-24 bg-cork-dust/5 rounded-full blur-2xl"></div>
+                    </div>
+                    <div className="text-7xl group-hover:scale-125 transition-transform duration-300 relative z-10">
+                      {project.image}
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-pitch-darkness/40 to-transparent group-hover:from-rust-accent/20 group-hover:to-transparent transition-all duration-300"></div>
                   </div>
 
-                  {/* View Link */}
-                  <div className="flex items-center gap-2 text-rust-accent font-semibold text-sm group-hover:gap-3 transition-all duration-300">
-                    Смотреть проект
-                    <ChevronRight size={16} />
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <h3 className="text-lg font-bold text-cork-dust mb-2 font-halyard group-hover:text-rust-accent transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-aged-stone mb-4 flex-grow group-hover:text-light-cork transition-colors duration-300">
+                      {project.description}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tags.map((tag, idx) => (
+                        <span
+                          key={idx}
+                          className="text-xs bg-rust-accent/10 text-cork-dust px-3 py-1.5 rounded-full border border-rust-accent/20 group-hover:bg-rust-accent/20 group-hover:border-rust-accent/40 transition-all duration-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* View Link */}
+                    <div className="flex items-center gap-2 text-rust-accent font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                      Смотреть проект
+                      <ChevronRight size={16} />
+                    </div>
                   </div>
                 </div>
               </div>

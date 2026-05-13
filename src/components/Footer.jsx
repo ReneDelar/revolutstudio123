@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { Mail, Linkedin, Twitter, Instagram } from 'lucide-react'
 
@@ -22,10 +24,10 @@ export default function Footer() {
           <div>
             <h4 className="text-cork-dust font-semibold mb-4">Навигация</h4>
             <ul className="space-y-2 text-aged-stone text-sm">
-              <li><Link href="/" className="hover:text-rust-accent transition-colors">Главная</Link></li>
-              <li><Link href="/about" className="hover:text-rust-accent transition-colors">О нас</Link></li>
-              <li><Link href="/portfolio" className="hover:text-rust-accent transition-colors">Портфолио</Link></li>
-              <li><Link href="/contact" className="hover:text-rust-accent transition-colors">Контакты</Link></li>
+              <li><Link href="/" className="hover:text-rust-accent hover:translate-x-1 transition-all duration-300 inline-block">Главная</Link></li>
+              <li><Link href="/about" className="hover:text-rust-accent hover:translate-x-1 transition-all duration-300 inline-block">О нас</Link></li>
+              <li><Link href="/portfolio" className="hover:text-rust-accent hover:translate-x-1 transition-all duration-300 inline-block">Портфолио</Link></li>
+              <li><Link href="/contact" className="hover:text-rust-accent hover:translate-x-1 transition-all duration-300 inline-block">Контакты</Link></li>
             </ul>
           </div>
 
@@ -33,10 +35,10 @@ export default function Footer() {
           <div>
             <h4 className="text-cork-dust font-semibold mb-4">Услуги</h4>
             <ul className="space-y-2 text-aged-stone text-sm">
-              <li><a href="#" className="hover:text-rust-accent transition-colors">Брендинг</a></li>
-              <li><a href="#" className="hover:text-rust-accent transition-colors">UI/UX Дизайн</a></li>
-              <li><a href="#" className="hover:text-rust-accent transition-colors">Веб-дизайн</a></li>
-              <li><a href="#" className="hover:text-rust-accent transition-colors">Маркетинг</a></li>
+              <li><a href="#" className="hover:text-rust-accent hover:translate-x-1 transition-all duration-300 inline-block">Брендинг</a></li>
+              <li><a href="#" className="hover:text-rust-accent hover:translate-x-1 transition-all duration-300 inline-block">UI/UX Дизайн</a></li>
+              <li><a href="#" className="hover:text-rust-accent hover:translate-x-1 transition-all duration-300 inline-block">Веб-дизайн</a></li>
+              <li><a href="#" className="hover:text-rust-accent hover:translate-x-1 transition-all duration-300 inline-block">Маркетинг</a></li>
             </ul>
           </div>
 
@@ -45,13 +47,13 @@ export default function Footer() {
             <h4 className="text-cork-dust font-semibold mb-4">Контакты</h4>
             <ul className="space-y-3 text-aged-stone text-sm">
               <li>
-                <a href="mailto:hello@revolyut.ru" className="flex items-center gap-2 hover:text-rust-accent transition-colors">
+                <a href="mailto:hello@revolyut.ru" className="flex items-center gap-2 hover:text-rust-accent hover:translate-x-1 transition-all duration-300">
                   <Mail size={16} />
                   hello@revolyut.ru
                 </a>
               </li>
               <li>
-                <a href="tel:+79991234567" className="hover:text-rust-accent transition-colors">
+                <a href="tel:+79991234567" className="hover:text-rust-accent hover:translate-x-1 transition-all duration-300 inline-block">
                   +7 (999) 123-45-67
                 </a>
               </li>

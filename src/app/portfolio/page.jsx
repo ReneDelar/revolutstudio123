@@ -3,11 +3,6 @@
 import { useState } from 'react'
 import { ChevronRight, ExternalLink } from 'lucide-react'
 
-export const metadata = {
-  title: 'Портфолио | Революет',
-  description: 'Лучшие работы студии дизайна Революет - брендинг, UI/UX, веб-дизайн и маркетинг'
-}
-
 export default function PortfolioPage() {
   const [activeCategory, setActiveCategory] = useState('all')
 
